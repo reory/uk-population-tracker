@@ -187,4 +187,4 @@ The next phase of the project focuses on Granular Urban Analytics:
 
 ---
 
-**Built by Roy Peters** ![My contact details😁](https://www.linkedin.com/in/roy-p-74980b382/)
+**Built by Roy Peters** ![contact details 😁](https://www.linkedin.com/in/roy-p-74980b382/)
