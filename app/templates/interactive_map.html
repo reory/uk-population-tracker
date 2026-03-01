@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive UK Population Tracker</title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 40px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover {
+            color: #2980b9;
+        }
+
+        .back-btn::before {
+            content: '←';
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        /* Interactive Map Card */
+        .map-card {
+            background: #2c2c2e;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #3a3a3c;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto 50px auto;
+        }
+
+        #map {
+            width: 100%;
+            height: 700px; /* Adjusted slightly for better viewing */
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: auto;
+            background-color: #2c2c2e;
+            border-top: 1px solid #3a3a3c;
+            color: #bdc3c7;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="nav-container">
+    <a href="{{ url_for('main.index') }}" class="back-btn">Back to Dashboard</a>
+</div>
+
+<h1>Interactive UK Population Tracker</h1>
+
+<div class="map-card">
+    <div id="map"></div>
+</div>
+
+<footer>
+    Built by Roy Peters😁
+    <a href="https://github.com/reory?tab=repositories"
+       target="_blank"
+       style="color: #4da3ff; text-decoration: none;">
+       GitHub Repository
+    </a>
+</footer>
+
+<script>
+    // Pass the JSON data from Flask to Javascript safely
+    var graph = {{ graph_json | safe }};
+    
+    // If graph_json is a string, parse it. If it's already an object, use it.
+    var plotData = (typeof graph === 'string') ? JSON.parse(graph) : graph;
+    
+    Plotly.newPlot('map', plotData.data, plotData.layout, {
+        responsive: true,
+        displayModeBar: true,
+        modeBarButtonsToRemove: ['lasso2d', 'select2d']
+    });
+</script>
+
+</body>
+</html>
+
+

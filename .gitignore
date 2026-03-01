@@ -1,0 +1,25 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Environment Variables (Crucial for MongoDB strings)
+.env
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db
