@@ -25,7 +25,8 @@
 
 - Responsive UI: Crafted a sleek "Dark Mode" interface featuring Hero Stat Cards that provide an instant narrative of the UK's top-performing regions.
 
-## 📸 Gallery & Interface
+<details>
+  <summary>📸 Gallery & Interface</summary>
 
 Below are snapshots of the application in action, highlighting the Dark/Silver aesthetic and the interactive data layers.
 
@@ -46,6 +47,8 @@ Below are snapshots of the application in action, highlighting the Dark/Silver a
 ![Interactve Map](screenshots/3.png)
 ![Interactive Map](screenshots/2.png)
 
+</details>
+
 ---
 
 ## 🎥 Project Demo
@@ -53,7 +56,7 @@ Below are snapshots of the application in action, highlighting the Dark/Silver a
 See the **Interactive UK Population Tracker** in action. This video demonstrates the seamless navigation between the dashboard, regional trends, and the interactive Plotly maps.
 
 <p align="center">
-  <video src="demo_video.mp4" width="800" controls muted>
+  <video src="demo.mp4" width="800" controls muted>
     Your browser does not support the video tag.
   </video>
 </p>
@@ -108,8 +111,8 @@ python run.py
 The Flask dashboard will be live at http://127.0.0.1:5000/
 
 ---
-
-## 🛠️ Tech Stack & Data Engineering
+<details>
+  <summary>🛠️ Tech Stack & Data Engineering</summary>
 
 - Backend: **Python 3.x**, **Flask** (Web Framework)
 
@@ -127,9 +130,13 @@ The Flask dashboard will be live at http://127.0.0.1:5000/
 
 - Frontend: **HTML5, CSS3, Plotly.js**
 
+</details>
+
 ---
 
-## 📊 Key Features
+<details>
+  <summary>📊 Key Features</summary>
+
 - Latest Snapshot: Real-time retrieval of the most recent database entry.
 
 - Multi-View Maps: Static regional analysis with formatted "Millions" labels for report-ready exports.
@@ -138,9 +145,12 @@ The Flask dashboard will be live at http://127.0.0.1:5000/
 
 - Automated Pipeline: Custom processing modules that handle data cleaning and map generation in one command.
 
+</details>
+
 ---
 
-## 🗺️ V2 Roadmap (The Drill-Down)
+<details>
+  <summary>🗺️ V2 Roadmap (The Drill-Down)</summary>
 
 The next phase of the project focuses on Granular Urban Analytics:
 
@@ -152,19 +162,29 @@ The next phase of the project focuses on Granular Urban Analytics:
 
 - Predictive Modeling: Using historical trends to forecast population growth over the next 5 years.
 
+</details>
+
 ---
 
-# 📝 Notes
+<details>
+  <summary>📝 Notes</summary>
+
 * **Data Privacy:** All data used in this demonstration is synthetically generated via Faker and Mimesis. No real ONS individual records were accessed or stored.
 * **Performance:** By utilizing Polars for the initial data joins and aggregation, the pipeline is capable of handling millions of rows while maintaining a sub-second response time for the dashboard.
 * **Compatibility:** Designed for modern browsers. Best viewed in Chrome or Edge for full Plotly interactivity.
 
----
+</details>
 
-## 🙏 Acknowledgments
+---
+<details>
+  <summary>🙏 Acknowledgments</summary>
+
 * **The ONS Open Geography Portal** for providing the boundary GeoJSON/GeoPackage files.
 * **The Open Source Community** for the incredible tools (Flask, Polars, MongoDB) that make projects like this possible.
 * **Showcase Viewers:** Thank you for taking the time to explore this project! Feedback is always welcome.
 
+</details>
+
 ---
+
 **Built by Roy Peters** ![My contact details😁](https://www.linkedin.com/in/roy-p-74980b382/)
