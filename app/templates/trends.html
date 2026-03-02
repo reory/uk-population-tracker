@@ -44,7 +44,7 @@
     }
 
     tr:nth-child(even) {
-        background-color: #f2f2f2;
+        background-color: #3a3a3c;
     }
 
     tr:hover {
@@ -94,6 +94,12 @@
 </div>
 
 <hr>
+
+<div class="chart-container">
+    <h3 style="text-align: center; color: #3498db;">Historical Population Growth</h3>
+    {{ line_chart_html | safe }}
+</div>
+
 <table>
   <tr>
     <th>Region</th>

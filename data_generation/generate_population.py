@@ -1,9 +1,10 @@
 from datetime import date
 import random
-from processing.mongo_client import get_db #type:ignore
+from processing.mongo_client import get_db
 from data_generation.regions import UK_REGIONS
 
 def generate_population_snapshot():
+    """Creates a single point in time population record for all regions."""
     
     # Connect to the database.
     db = get_db()

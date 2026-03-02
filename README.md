@@ -37,7 +37,9 @@ Below are snapshots of the application in action, highlighting the Dark/Silver a
 ### 2. Population Trends
 *Interactive bar charts showing percentage change across the 12 UK regions.*
 ![Bar Chart Graph Main Overview](screenshots/1.png)
+![Line Chart Overview](screenshots/8.png)
 ![Region Overview](screenshots/1a.png)
+
 
 ### 3. Geospatial Analytics
 *Interactive choropleth maps generated via Geopandas and Plotly.*

@@ -4,6 +4,7 @@ from processing.map_regions import load_nuts1_geography
 
 
 def trend_summary():
+    """Calculates growth rates and percentage changes across all regions."""
 
     df = compute_trends()
 

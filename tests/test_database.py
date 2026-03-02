@@ -38,6 +38,10 @@ def mock_mongo_globally(mocker):
     return mock_db
 
 def test_trend_calculation_logic():
+    """
+    Verify that the population
+    growth math and noise parameters works as expected.
+    """
 
     # Import inside to ensure the patch is ready
     from processing.summary import trend_summary

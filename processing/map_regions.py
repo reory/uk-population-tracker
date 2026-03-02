@@ -6,11 +6,13 @@ from matplotlib.ticker import FuncFormatter
 
 def load_nuts1_geography():
     """Load the UK Nuts1 geography from the GEO Package."""
+
     gdf = gpd.read_file("data/geography/uk_regions.gpkg")
     return gdf
 
 def add_labels(ax, gdf, value_column):
     """Adds text labels to the map centroids."""
+
     for _, row in gdf.iterrows():
         centroid = row.geometry.centroid
         label = f"{row['nuts118nm']}\n{row[value_column]:.2f}%"
@@ -28,6 +30,7 @@ def add_labels(ax, gdf, value_column):
 
 def apply_dark_theme():
     """Helper to set matplotlib global colors to match Silver/Dark theme."""
+
     plt.rcParams.update({
         'text.color': "#bdc3c7",
         'axes.labelcolor': "#bdc3c7",
@@ -38,10 +41,14 @@ def apply_dark_theme():
     })
 
 def plot_population_map():
+    """Renders the choropleth map using GeoJSON boundaries and MongoDB data."""
+
     from processing.summary import trend_summary
+
     apply_dark_theme()
 
     regions = gpd.read_file("data/geography/uk_regions.gpkg").to_crs(epsg=4326)
+    
     summary = trend_summary().to_pandas()
 
     merged = regions.merge(
@@ -55,6 +62,8 @@ def plot_population_map():
     fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
     def millions_format(x, pos):
+        """Format axis ticks to display values in millions (eg 2.5M)"""
+
         return f"{x*1e-6:.1f}M"
 
     merged.plot(
@@ -79,6 +88,8 @@ def plot_population_map():
     plt.close()
 
 def plot_population_change_map():
+    """Renders a heatmap of UK population growth/decline percentages."""
+
     from processing.summary import trend_summary
     apply_dark_theme()
 
@@ -112,7 +123,10 @@ def plot_population_change_map():
     plt.close()
 
 def plot_percentage_change_map():
+    """Renders a choropleth map highlighting population growth/decline."""
+
     from processing.summary import trend_summary
+    
     apply_dark_theme()
 
     regions = gpd.read_file("data/geography/uk_regions.gpkg").to_crs(epsg=4326)

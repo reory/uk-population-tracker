@@ -4,6 +4,8 @@ import polars as pl
 
 @pytest.fixture
 def client(mocker):
+    """Configure a clean test client for API and Route testing."""
+    
     # 1. Create a fake collection with data that matches your route's needs
     mock_col = mongomock.MongoClient().db.collection
     mock_col.insert_one({
@@ -13,7 +15,7 @@ def client(mocker):
     })
 
     # 2. Mock 'trend_summary' so it doesn't try to hit the DB either
-    # We return a small Polars DataFrame since your route expects one
+    # Return a small Polars DataFrame since the route expects one
     mock_df = pl.DataFrame({
         "region_name": ["London", "North West"],
         "population": [9000000, 7000000],
@@ -25,7 +27,7 @@ def client(mocker):
     mocker.patch('app.routes.collection', mock_col)
     mocker.patch('app.routes.trend_summary', return_value=mock_df)
     
-    # 4. NOW import the app (this avoids the early connection attempt)
+    # 4. NOW import the app
     from run import app as flask_app
     flask_app.config['TESTING'] = True
     

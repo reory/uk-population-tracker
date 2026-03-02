@@ -4,12 +4,14 @@ from processing.mongo_client import collection
 import random
 
 def get_latest_snapshot():
+    """Retrieves the single most recent population entry from MongoDB."""
 
     latest = list(collection.find().sort("date", -1).limit(1))
     return latest[0] if latest else None
 
 
 def generate_next_month():
+    """Appends a new population snapshot for the upcoming month to MongoDB."""
     
     latest = get_latest_snapshot()
 
@@ -33,6 +35,7 @@ def generate_next_month():
         date = datetime(year, month, 1)
 
     snapshot = []
+
     for region_code, baseline in current_baselines.items():
         low, high = growth_ranges[region_code]
         pct_change = random.uniform(low, high)
@@ -55,6 +58,10 @@ def generate_next_month():
     return snapshot
 
 def generate_history(months: int = 24):
+    """
+    Backfills MongoDB with monthly population 
+    snapshots for the past 24 months
+    """
 
     history = []
 

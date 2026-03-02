@@ -2,9 +2,12 @@ from faker import Faker
 from mimesis import Numeric
 import random
 from datetime import datetime
+from data_generation.regions import UK_REGIONS
 
+# Initialize Faker to generate realistic synthetic data for testing.
 fake = Faker()
 
+# Initialize numeric utility for consistent data formatting.
 numeric = Numeric()
 
 # Realistic Baseline populations (ONS sourced.)
@@ -40,25 +43,29 @@ growth_ranges = {
 }
 
 def generate_population_snapshot(date: datetime):
+    """Simulates a UK-wide population record with human-readable names."""
 
     snapshot = []
 
-    for region_code, baseline in baselines.items():
-        low, high = growth_ranges[region_code]
+    # We loop through (UK_REGIONS)
+    for region in UK_REGIONS:
+        code = region["region_code"]
+        name = region["region_name"]
 
-        # Generate a realsitic monthly percentage change
+        # 1. Pull the math constants using the code
+        baseline = baselines[code]
+        low, high = growth_ranges[code]
+
+        # 2. Run your existing logic
         pct_change = random.uniform(low, high)
-
-        # Convert to absolute change
         change = int(baseline * (pct_change / 100))
-
-        # Add some random noise using Mimesis
         noise = numeric.integer_number(start=-150, end=150)
-
         population = baseline + change + noise
 
+        # 3. Build the record (Now with region_name!)
         snapshot.append({
-            "region_code": region_code,
+            "region_code": code,
+            "region_name": name,  # This ensures Plotly sees 'London' etc.
             "population": population,
             "pct_change": pct_change,
             "change": change + noise,

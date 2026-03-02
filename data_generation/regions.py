@@ -1,4 +1,4 @@
-# Regions of the UK.
+# These keys link our popualtion data to the GeoJSON properties for mapping.
 UK_REGIONS = [
     {"region_code": "UKC", "region_name": "North East"},
     {"region_code": "UKD", "region_name": "North West"},

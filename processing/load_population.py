@@ -2,6 +2,7 @@ import polars as pl
 from processing.mongo_client import get_db # type:ignore
 
 def load_population_snapshots():
+    """Makes a Polars Dataframe from MongoDB snapshot records."""
 
     db = get_db()
     

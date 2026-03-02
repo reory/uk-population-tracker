@@ -2,12 +2,16 @@ import plotly.express as px
 from flask import Blueprint, render_template
 from processing.summary import trend_summary
 from visualisation.plotly_maps import build_interactive_toggle_map
+from visualisation.line_charts import population_line_chart
 from processing.mongo_client import collection
 from processing.map_regions import (
     plot_population_map,
     plot_percentage_change_map
 )
 
+# Create a Blueprint object named "main"
+# __name__ helps Flask locate the blueprint's resources 
+# (like templates/static files)
 main = Blueprint("main", __name__)
 
 # Dashboard views------------------------------
@@ -80,12 +84,21 @@ def trends():
 
     # Convert Plotly figure to HTML fragment.
     graph_html = fig.to_html(full_html=False)
-
+    
+    # Generate the Plotly chart
+    line_fig = population_line_chart()
+    
+    # Convert the figure into a <div> string (without the <html> or <body> tags)
+    # This "injects" it directly into an existing dashboard template
+    line_chart_html = line_fig.to_html(full_html=False)
+    
+    # Converts the summarized trend data into a list of dictionaries.
     summary_list = df.to_dict(orient="records")
 
     return render_template(
         "trends.html", 
-        graph_html=graph_html, 
+        graph_html=graph_html,
+        line_chart_html=line_chart_html,
         summary=summary_list
     )
 

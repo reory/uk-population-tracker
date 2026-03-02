@@ -3,11 +3,16 @@ import geopandas as gpd
 import json
 from processing.summary import trend_summary
 
-def build_interactive_toggle_map(): 
+def build_interactive_toggle_map():
+    """Create a Plotly mapbox with a UI layer toggle."""
     
+    # Load the gpkg file.
     regions = (gpd.read_file("data/geography/uk_regions.gpkg")
               .to_crs(epsg=4326)
     )
+
+    # Convert the Polars summary into a Pandas DataFrame 
+    # so it is compatible with Plotly/Dash.
     summary = trend_summary().to_pandas()
 
     merged = regions.merge(
@@ -17,6 +22,8 @@ def build_interactive_toggle_map():
         how="left"
     )
     
+    # Convert the GeoDataFrame 
+    # into a GeoJSON formatted dictionary for Plotlys mapping engine.
     geojson = json.loads(merged.to_json())
 
     fig = go.Figure()
@@ -48,7 +55,9 @@ def build_interactive_toggle_map():
         visible=False,
         marker=dict(opacity=0.7)
     )
-
+    
+    # Configure map (centered on the UK.) 
+    # Styled with interactive layer and switch buttons.
     fig.update_layout(
         mapbox_style="open-street-map",
         mapbox_zoom=5,
