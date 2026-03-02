@@ -112,6 +112,16 @@ The Flask dashboard will be live at http://127.0.0.1:5000/
 
 ---
 
+## 🧪 Testing
+This project uses `pytest` and `mongomock`.
+To run the full suite:
+`pytest`
+
+To skip live database checks:
+`pytest -m "not live"`
+
+---
+
 <details>
   <summary>🛠️ Tech Stack & Data Engineering</summary>
 
@@ -189,4 +199,4 @@ The next phase of the project focuses on Granular Urban Analytics:
 
 ---
 
-**Built by Roy Peters** ![contact details 😁](https://www.linkedin.com/in/roy-p-74980b382/)
+**Built by Roy Peters** [contact details 😁](https://www.linkedin.com/in/roy-p-74980b382/)
