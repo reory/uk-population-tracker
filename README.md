@@ -111,6 +111,7 @@ python run.py
 The Flask dashboard will be live at http://127.0.0.1:5000/
 
 ---
+
 <details>
   <summary>🛠️ Tech Stack & Data Engineering</summary>
 
@@ -176,6 +177,7 @@ The next phase of the project focuses on Granular Urban Analytics:
 </details>
 
 ---
+
 <details>
   <summary>🙏 Acknowledgments</summary>
 

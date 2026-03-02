@@ -1,6 +1,8 @@
 from pymongo import MongoClient
 
-client = MongoClient("mongodb://localhost:27017")
+MONGO_URI = "mongodb://localhost:27017"
+
+client = MongoClient(MONGO_URI)
 db = client["uk_population_tracker"]
 
 def get_db():

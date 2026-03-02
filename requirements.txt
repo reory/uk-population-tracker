@@ -39,3 +39,5 @@ six==1.17.0
 tk==0.1.0
 tzdata==2025.3
 Werkzeug==3.1.6
+mongomock
+pytest-mock
