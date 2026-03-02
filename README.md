@@ -2,6 +2,10 @@
 
 - An end-to-end data engineering and visualization platform that transforms raw UK     population data into actionable geographic insights.
 
+![License](https://img.shields.io/badge/License-MIT-green)
+![Repo Size](https://img.shields.io/github/repo-size/reory/uk-population-tracker?cacheSeconds=60)
+![Last Commit](https://img.shields.io/github/last-commit/reory/uk-population-tracker?cacheSeconds=60)
+
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
