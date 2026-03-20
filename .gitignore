@@ -8,6 +8,9 @@ venv/
 env/
 .venv/
 
+# Files
+data/*.json
+
 # Environment Variables (Crucial for MongoDB strings)
 .env
 
