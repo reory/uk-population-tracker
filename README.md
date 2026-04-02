@@ -179,6 +179,8 @@ The next phase of the project focuses on Granular Urban Analytics:
 
 - Predictive Modeling: Using historical trends to forecast population growth over the next 5 years.
 
+- Use prophet along with pandas for high quality forecasting for data.
+
 </details>
 
 ---
