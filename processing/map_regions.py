@@ -48,7 +48,6 @@ def plot_population_map():
     apply_dark_theme()
 
     regions = gpd.read_file("data/geography/uk_regions.gpkg").to_crs(epsg=4326)
-    
     summary = trend_summary().to_pandas()
 
     merged = regions.merge(
@@ -61,12 +60,10 @@ def plot_population_map():
     # We create the ax first so we can turn off the coordinates correctly
     fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
-    def millions_format(x, pos):
-        """Format axis ticks to display values in millions (eg 2.5M)"""
-
+    def millions_formatter_func(x, pos):
         return f"{x*1e-6:.1f}M"
 
-    merged.plot(
+        merged.plot(
         column="population",
         cmap="viridis",
         legend=True,
@@ -76,16 +73,9 @@ def plot_population_map():
         legend_kwds={
             "label": "Population (Millions)",
             "orientation": "vertical",
-            "format": FuncFormatter(millions_format)
+            "format": FuncFormatter(millions_formatter_func)
         }
     )
-
-    ax.set_axis_off()
-    plt.title("UK Population Distribution", fontsize=15, pad=20)
-    
-    plt.savefig("app/static/images/population_map.png", 
-                dpi=150, bbox_inches="tight", transparent=True)
-    plt.close()
 
 def plot_population_change_map():
     """Renders a heatmap of UK population growth/decline percentages."""
