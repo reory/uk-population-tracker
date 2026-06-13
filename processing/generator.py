@@ -47,7 +47,7 @@ def generate_population_snapshot(date: datetime):
 
     snapshot = []
 
-    # We loop through (UK_REGIONS)
+    # Loop through (UK_REGIONS)
     for region in UK_REGIONS:
         code = region["region_code"]
         name = region["region_name"]
