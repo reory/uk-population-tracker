@@ -1,4 +1,4 @@
-# UK Population Tracker GB
+# 🗺️ UK Population Tracker GB
 
 - An end-to-end data engineering and visualization platform that transforms raw UK     population data into actionable geographic insights.
 
