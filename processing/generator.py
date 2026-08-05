@@ -1,7 +1,9 @@
-from faker import Faker
-from mimesis import Numeric
 import random
 from datetime import datetime
+
+from faker import Faker
+from mimesis import Numeric
+
 from data_generation.regions import UK_REGIONS
 
 # Initialize Faker to generate realistic synthetic data for testing.

@@ -1,6 +1,7 @@
 import polars as pl
-from processing.trends import compute_trends
+
 from processing.map_regions import load_nuts1_geography
+from processing.trends import compute_trends
 
 
 def trend_summary():

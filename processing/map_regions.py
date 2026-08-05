@@ -62,7 +62,7 @@ def plot_population_map():
     )
 
     # Create the ax first so we can turn off the coordinates correctly
-    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+    _fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
     def millions_formatter_func(x, pos):
         return f"{x*1e-6:.1f}M"
@@ -96,7 +96,7 @@ def plot_population_change_map():
         summary, left_on="nuts118cd", right_on="region_code", how="left"
     )
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+    _fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
     merged.plot(
         column="change",
@@ -134,7 +134,7 @@ def plot_percentage_change_map():
         summary, left_on="nuts118cd", right_on="region_code", how="left"
     )
 
-    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+    _fig, ax = plt.subplots(1, 1, figsize=(10, 10))
 
     merged.plot(
         column="pct_change",

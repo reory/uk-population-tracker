@@ -1,6 +1,6 @@
-import pytest
 import mongomock
 import polars as pl
+import pytest
 
 
 @pytest.fixture

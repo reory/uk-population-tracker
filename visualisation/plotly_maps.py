@@ -1,7 +1,10 @@
-import plotly.graph_objects as go
-import geopandas as gpd
 import json
+
+import geopandas as gpd
+import plotly.graph_objects as go
+
 from processing.summary import trend_summary
+
 
 def build_interactive_toggle_map():
     """Create a Plotly mapbox with a UI layer toggle."""
@@ -35,11 +38,11 @@ def build_interactive_toggle_map():
         featureidkey="properties.nuts118cd",
         z=merged["population"],
         colorscale="Viridis",
-        colorbar=dict(title="Population"),
+        colorbar={"title": "Population"},
         hovertext=merged["nuts118nm"],
         hovertemplate="<b>%{hovertext}</b><br>Population: %{z:,}<extra></extra>",
         visible=True,
-        marker=dict(opacity=0.7)
+        marker={"opacity": 0.7},
     )
 
     # Percentage change layer
@@ -49,11 +52,11 @@ def build_interactive_toggle_map():
         featureidkey="properties.nuts118cd",
         z=merged["pct_change"],
         colorscale="RdBu",
-        colorbar=dict(title="% Change"),
+        colorbar={"title": "% Change"},
         hovertext=merged["nuts118nm"],
         hovertemplate="<b>%{hovertext}</b><br>% Change: %{z:.3f}%<extra></extra>",
         visible=False,
-        marker=dict(opacity=0.7)
+        marker={"opacity": 0.7},
     )
     
     # Configure map (centered on the UK.) 

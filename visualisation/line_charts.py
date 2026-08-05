@@ -1,5 +1,7 @@
 import plotly.express as px
+
 from processing.load_population import load_population_snapshots
+
 
 def population_line_chart():
     """Generate a time series line chart for regional population trends."""
@@ -29,40 +31,40 @@ def population_line_chart():
     fig.update_layout(
         paper_bgcolor="#2c2c2e",  # Matches dashboard card background
         plot_bgcolor="#2c2c2e",   # Matches inner chart background
-        font=dict(
-            family="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-            size=14,
-            color="#ecf0f1"
-        ),
-        legend=dict(
-            title_text="UK Regions",
-            font=dict(size=12, color="#ecf0f1"),
-            bgcolor="rgba(26, 26, 27, 0.8)", # Dark gray with slight transparency
-            bordercolor="#3a3a3c",
-            borderwidth=1
-        ),
-        margin=dict(l=40, r=40, t=60, b=40),
-        hovermode="closest", # Shows all regional data in one tooltip on hover
-        hoverlabel=dict(
-            bgcolor="#1a1a1b",
-            font_size=12,
-            font_color="#0d19f4",
-            bordercolor="#3498db"
-        ),
+        font={
+            "family":"'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            "size": 14,
+            "color": "#ecf0f1"
+        },
+        legend={
+            "title_text": "UK Regions",
+            "font": {"size": 12, "color": "#ecf0f1"},
+            "bgcolor": "rgba(26, 26, 27, 0.8)",  # Dark gray with slight transparency
+            "bordercolor": "#3a3a3c",
+            "borderwidth": 1,
+        },
+        margin={"l": 40, "r": 40, "t": 60, "b": 40},
+        hovermode="closest",  # Shows all regional data in one tooltip on hover
+        hoverlabel={
+            "bgcolor": "#1a1a1b",
+            "font_size": 12,
+            "font_color": "#0d19f4",
+            "bordercolor": "#3498db",
+        },
     )
 
     # Update Axes
     fig.update_xaxes(
-        title_font=dict(size=14, color="#3498db"),
-        tickfont=dict(family="'Segoe UI'", size=12, color="#bdc3c7"),
-        gridcolor="#3a3a3c"
+        title_font={"size": 14, "color": "#3498db"},
+        tickfont={"family": "'Segoe UI'", "size": 12, "color": "#bdc3c7"},
+        gridcolor="#3a3a3c",
     )
 
     fig.update_yaxes(
-        title_font=dict(size=14, color="#3498db"),
-        tickfont=dict(family="'Segoe UI'", size=12, color="#bdc3c7"),
+        title_font={"size": 14, "color": "#3498db"},
+        tickfont={"family": "'Segoe UI'", "size": 12, "color": "#bdc3c7"},
         gridcolor="#3a3a3c",
-        tickformat=",.0f" # Adds commas to population numbers (e.g., 10,000,000)
+        tickformat=",.0f",  # Adds commas to population numbers (e.g., 10,000,000)
     )
     
     return fig

@@ -1,6 +1,6 @@
 import os
+
 import geopandas as gpd
-import pytest
 
 # This test ensures that the critical uk_regions.gpkg file exists and is readable. 
 # If this fails, the maps won't render.

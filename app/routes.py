@@ -1,13 +1,11 @@
 import plotly.express as px
 from flask import Blueprint, render_template
-from processing.summary import trend_summary
-from visualisation.plotly_maps import build_interactive_toggle_map
-from visualisation.line_charts import population_line_chart
+
+from processing.map_regions import plot_percentage_change_map, plot_population_map
 from processing.mongo_client import collection
-from processing.map_regions import (
-    plot_population_map,
-    plot_percentage_change_map
-)
+from processing.summary import trend_summary
+from visualisation.line_charts import population_line_chart
+from visualisation.plotly_maps import build_interactive_toggle_map
 
 # Create a Blueprint object named "main"
 # __name__ helps Flask locate the blueprint's resources 
@@ -21,7 +19,7 @@ main = Blueprint("main", __name__)
 def index():
     
     # Fetch the single most recent entry from the MongoDB.
-    latest = list(collection.find().sort("date", -1).limit(1))[0]
+    latest = collection.find_one(sort=[("date", -1)])
 
     # Generate the summary data for stats on main dashboard page.
     # Get data from Polars and Pandas.
@@ -69,17 +67,17 @@ def trends():
         },
     )
     
-    fig.update_traces(marker=dict(color="#F6F2F2"))
+    fig.update_traces(marker={"color":"#F6F2F2"})
 
     fig.update_layout(
-        hoverlabel=dict(
-            bgcolor="lightslategray",
-            bordercolor="#F9F9F4"
-        ),
+        hoverlabel={
+            "bgcolor": "lightslategray",
+            "bordercolor": "#F9F9F4",
+        },
         template="plotly_dark",
         xaxis_tickangle=-45,
         height=500,
-        margin=dict(l=40, r=40, t=80, b=120)
+        margin={"l": 40, "r": 40, "t": 80, "b": 120}
     )
 
     # Convert Plotly figure to HTML fragment.

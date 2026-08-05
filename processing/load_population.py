@@ -1,4 +1,5 @@
 import polars as pl
+
 from processing.mongo_client import get_db
 
 

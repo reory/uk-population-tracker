@@ -1,7 +1,8 @@
-import pytest
+from datetime import datetime, timezone
+
 import mongomock
 import polars as pl
-from datetime import datetime
+import pytest
 
 # This test is to make sure that the connection to the mocked database is healthy.
 
@@ -17,14 +18,14 @@ def mock_mongo_globally(mocker):
     # The code expects a 'snapshots' collection with a 'data' list to explode
     mock_db.snapshots.insert_many([
         {
-            "date": datetime(2024, 1, 1),
+            "date": datetime(2024, 1, 1, tzinfo=timezone.utc),
             "data": [
                 {"region_name": "London", "population": 9000000},
                 {"region_name": "North West", "region_code": "A124567", "population": 7000000}
             ]
         },
         {
-            "date": datetime(2025, 1, 1),
+            "date": datetime(2025, 1, 1, tzinfo=timezone.utc),
             "data": [
                 {"region_name": "London", "population": 9100000},
                 {"region_name": "North West", "region_code": "A124567", "population": 7070000}

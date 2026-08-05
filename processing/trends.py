@@ -1,5 +1,7 @@
 import polars as pl
+
 from processing.load_population import load_population_snapshots
+
 
 def compute_trends():
     """

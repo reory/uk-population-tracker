@@ -1,7 +1,9 @@
-from datetime import datetime
+import random
+from datetime import datetime, timezone
+
 from processing.generator import baselines, growth_ranges, numeric
 from processing.mongo_client import collection
-import random
+
 
 def get_latest_snapshot():
     """Retrieves the single most recent population entry from MongoDB."""
@@ -17,7 +19,7 @@ def generate_next_month():
 
     if latest is None:
         current_baselines = baselines
-        date = datetime(2024, 1, 1)
+        date = datetime(2024, 1, 1, tzinfo=timezone.utc)
     else:
         current_baselines = {
             item["region_code"]: item["population"]
@@ -32,7 +34,7 @@ def generate_next_month():
             month = 1
             year += 1
 
-        date = datetime(year, month, 1)
+        date = datetime(year, month, 1, tzinfo=timezone.utc)
 
     snapshot = []
 
